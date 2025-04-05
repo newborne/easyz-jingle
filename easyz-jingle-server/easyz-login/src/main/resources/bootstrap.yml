@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: easyz-login
+  cloud:
+    nacos:
+      config:
+        server-addr: centos:8848 # nacos的服务端地址
+        file-extension: yaml
+        shared-configs[0]:
+          data-id: all-services.yaml # 配置文件的id
+          group: DEFAULT_GROUP # 配置文件的分组
+          refresh: true # 是否开启自动刷新

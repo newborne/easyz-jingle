@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>cn.easyz</groupId>
+        <artifactId>easyz-jingle-server</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <artifactId>easyz-server</artifactId>
+    <dependencies>
+        <!-- easyz-common 依赖 -->
+        <dependency>
+            <groupId>cn.easyz</groupId>
+            <artifactId>easyz-common</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <!-- easyz-dubbo-interface 依赖 -->
+        <dependency>
+            <groupId>cn.easyz</groupId>
+            <artifactId>easyz-dubbo-interface</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <!-- Spring Cloud Dubbo -->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-dubbo</artifactId>
+        </dependency>
+        <!-- ArcSoft 人脸识别 SDK 依赖，使用本地 JAR 文件 -->
+                <dependency>
+                    <groupId>com.arcsoft.face</groupId>
+                    <artifactId>arcsoft-sdk-face</artifactId>
+                    <version>3.0.0.0</version>
+                    <scope>system</scope>
+                    <systemPath>${basedir}/lib/arcsoft-sdk-face-3.0.0.0.jar</systemPath>
+                </dependency>
+<!--        <dependency>-->
+<!--            <groupId>com.arcsoft.face</groupId>-->
+<!--            <artifactId>arcsoft-sdk-face</artifactId>-->
+<!--        </dependency>-->
+    </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+</project>

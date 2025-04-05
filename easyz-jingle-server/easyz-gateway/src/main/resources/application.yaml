@@ -1,0 +1,38 @@
+server:
+  port: 17000
+spring:
+  servlet:
+    multipart:
+      max-file-size: 30MB
+      max-request-size: 30MB
+  application:
+    name: easyz-gateway
+  cloud:
+    nacos:
+      discovery:
+        server-addr: centos:8848 # 将gateway注册到nacos
+    gateway:
+      discovery:
+        locator:
+          enabled: true # 让gateway可以发现nacos中的微服务
+      routes:
+        - id: easyz-login
+          uri: lb://easyz-login # lb指的是从nacos中按照名称获取微服务,并遵循负载均衡策略
+          predicates:
+            - Path=/easyz-login/**
+          filters:
+            - StripPrefix=1
+        - id: easyz-server
+          uri: lb://easyz-server # lb指的是从nacos中按照名称获取微服务,并遵循负载均衡策略
+          predicates:
+            - Path=/easyz-server/**
+          filters:
+            - StripPrefix=1
+        - id: easyz-neo4j
+          uri: lb://easyz-neo4j # lb指的是从nacos中按照名称获取微服务,并遵循负载均衡策略
+          predicates:
+            - Path=/easyz-neo4j/**
+          filters:
+            - StripPrefix=1
+  profiles:
+    active: dev # 环境标识

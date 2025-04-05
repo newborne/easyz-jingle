@@ -1,0 +1,21 @@
+   spring:
+     application:
+       name: easyz-temp
+     cloud:
+       nacos:
+         config:
+           server-addr: 127.0.0.1:8848  # Nacos服务器地址
+           file-extension: yaml          # 配置文件扩展名
+           group: DEFAULT_GROUP        # 配置文件所在的组
+           namespace:                  # 命名空间（可选）
+           prefix:                     # 配置文件前缀（可选）
+
+   datasource:
+     driver-class-name: com.mysql.cj.jdbc.Driver
+     url: jdbc:mysql://centos:3306/easyz-jingle?useUnicode=true&characterEncoding=utf8&autoReconnect=true&allowMultiQueries=true&useSSL=false
+     username: root
+     password: newborne
+
+   server:
+     port: 18080
+   

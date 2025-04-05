@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: easyz-server
+  cloud:
+    nacos:
+      config:
+        server-addr: centos:8848 # nacos的服务端地址
+        file-extension: yaml
+        shared-configs[0]:
+          data-id: all-services.yaml # 配置文件的id
+          group: DEFAULT_GROUP # 配置文件的分组
+          refresh: true # 是否开启自动刷新
+  profiles:
+    active: dev # 环境标识
+dubbo:
+  protocols:
+    dubbo:
+      name: dubbo # 服务协议
+      port: -1 # 服务端口
+  registry:
+    address: spring-cloud://centos # 注册中心
+  cloud:
+    subscribed-services: easyz-dubbo  # 订阅的提供者名称
+  consumer:
+    timeout: 3000
+    check: false  # 默认true.服务启动时候检查是否可用,服务不可用时无法启动项目, false则不检查
+    retries: 2    # 服务重试次数
